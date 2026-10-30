@@ -1,0 +1,148 @@
+Lab Assignment 1
+
+
+Title: In an e-commerce system, customer account IDs are stored in a list, and you are tasked
+with
+writing a program that implements the following:
+• Linear Search: Check if a particular customer account ID exists in the list.
+• Binary Search: Implement Binary search to find if a customer account ID exists,
+improving the search efficiency over the basic linear
+
+
+Program code:
+#include<stdio.h>
+void linear(int arr[], int n){
+printf("\n========Linear Search========");
+int key, i, flag=0;
+printf("\n\nEnter customer ID to search: ");
+scanf("%d"
+,&key);
+for(i=0;i<n;i++)
+{
+if (arr[i]==key)
+{
+flag=1;
+break;
+}
+}
+{
+if(flag==1)
+printf("\nCustomer ID found at index %d"
+,i);
+}
+{
+else
+printf("\nCustomer ID not found");
+}
+}
+void binary(int arr[], int n){
+printf("\n========Binary Search========");
+int key, i, flag=0;
+printf("\n\nEnter customer ID to search: ");
+scanf("%d"
+,&key);
+int found=0;
+int low=0, high=n-1, mid;
+do{
+mid=(low+high)/2;
+if(key==arr[mid]) {
+printf("\nCustomer ID found at Index %d"
+, mid);
+found=1;
+}
+else if(key>arr[mid]) {
+low = mid+1;
+}
+else {
+high = mid-1;
+}
+}while(found==0 && low <= high);
+if(found==0){
+printf("Customer ID not found");
+}
+}
+int main(){
+int arr[10], n, i;
+printf("\nEnter total no. of customers (max 10): ");
+scanf("%d"
+,&n);
+printf("\nEnter customer IDs: ");
+for(i=0;i<n;i++)
+{
+printf("\nEnter ID of customer no. %d: "
+,i+1);
+scanf("%d"
+,&arr[i]);
+}
+printf("\nEntered customer IDs are: ");
+for(i=0;i<n;i++)
+{
+printf("%d "
+,arr[i]);
+}
+printf("\n");
+char ch;
+do{
+int choice;
+printf("\nWhich type of search do you want to perform? \n1. Linear Search \n2. Binary
+Search \nEnter choice (1 or 2): ");
+scanf("%d"
+,&choice);
+switch(choice) {
+case 1:
+linear(arr, n);
+break;
+case 2:
+binary(arr, n);
+break;
+default:
+printf("\nEnter valid choice");
+}
+printf("\n\nDo you want to continue?(y/n): ");
+scanf(" %c"
+, &ch);
+}while(ch == 'y'|| ch == 'Y');
+return 0;
+}
+
+
+
+
+
+
+Output:
+Enter total no. of customers (max 10): 5
+Enter customer IDs:
+Enter ID of customer no. 1: 101
+Enter ID of customer no. 2: 102
+Enter ID of customer no. 3: 103
+Enter ID of customer no. 4: 104
+Enter ID of customer no. 5: 105
+Entered customer IDs are: 101 102 103 104 105
+Which type of search do you want to perform?
+1. Linear Search
+2. Binary Search
+Enter choice (1 or 2): 1
+========Linear Search========
+
+Enter customer ID to search: 101
+Customer ID found at index 0
+Do you want to continue?(y/n): y
+Which type of search do you want to perform?
+1. Linear Search
+2. Binary Search
+Enter choice (1 or 2): 2
+========Binary Search========
+
+Enter customer ID to search: 104
+Customer ID found at Index 3
+Do you want to continue?(y/n): y
+Which type of search do you want to perform?
+1. Linear Search
+2. Binary Search
+Enter choice (1 or 2): 1
+========Linear Search========
+
+Enter customer ID to search: 106
+Customer ID not found
+Do you want to continue?(y/n): n
